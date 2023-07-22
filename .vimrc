@@ -352,7 +352,7 @@ nnoremap <silent> <leader>fb :Leaderf buffer<CR>
 "函数搜索（仅当前文件里）。
 nnoremap <silent> <leader>fF :Leaderf function<CR>
 "grep模糊搜索。
-nnoremap <silent> <leader>fr :Leaderf rg<CR>
+nnoremap <silent> <leader>fr :Leaderf rg -t c -t h<CR>
 "搜索行。
 nnoremap <silent> <leader>fl :Leaderf line<CR>
 "搜索gtags。
