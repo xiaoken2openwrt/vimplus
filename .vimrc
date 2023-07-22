@@ -326,12 +326,66 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ }
 
 " LeaderF
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>f :LeaderfFile .<cr>
 let g:Lf_WildIgnore = {
             \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh'],
-            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]','*.ign']
             \}
 let g:Lf_UseCache = 0
+let g:Lf_WindowPosition = 'popup'                          "使能浮动窗口，需要Vim 8.1.1615以上版本。
+let g:Lf_PreviewInPopup = 1                                "使能按ctrl p键在弹出窗口中预览结果。
+let g:Lf_HideHelp = 1                                      "隐藏帮助信息。
+let g:Lf_UseCache = 0
+let g:Lf_CacheDirectory = expand('~/.VimCache/')           "设置Leaderf缓存根目录。
+let g:Lf_StlSeparator = { 'left': '', 'right': '' }      "分隔符号。
+let g:Lf_ShowDevIcons = 0                                  "不显示图标。
+let g:Lf_MaxCount = 500000                                 "最大搜索条目
+
+"按键映射前缀: <leader>f。
+"文件搜索。
+nnoremap <silent> <leader>ff :Leaderf file<CR>
+"历史打开过的文件。
+nnoremap <silent> <leader>fm :Leaderf mru<CR>
+"Buffer。
+nnoremap <silent> <leader>fb :Leaderf buffer<CR>
+"函数搜索（仅当前文件里）。
+nnoremap <silent> <leader>fF :Leaderf function<CR>
+"grep模糊搜索。
+nnoremap <silent> <leader>fr :Leaderf rg<CR>
+"搜索行。
+nnoremap <silent> <leader>fl :Leaderf line<CR>
+"搜索gtags。
+nnoremap <silent> <leader>fg :Leaderf gtags<CR>
+
+"通过Leaderf rg在当前缓存中搜索光标下的字符串。
+"noremap <leader>f<c-b> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s
+", expand("<cword>"))<CR><CR>
+"通过Leaderf rg搜索光标下的字符串。
+"noremap <leader>f<c-f> :<C-U><C-R>=printf("Leaderf! rg -e %s ",
+"expand("<cword>"))<CR><CR>
+"打开最近一次Leaderf rg搜索窗口。
+"noremap <leader>fr :<C-U>Leaderf! rg --recall<CR>
+
+"搜索当前光标下函数引用，如果搜索结果只有一个则直接跳转。
+"noremap <leader>fc :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump",
+"expand("<cword>"))<CR><CR>
+""搜索当前光标下函数定义，如果搜索结果只有一个则直接跳转。
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+"打开上一次gtags搜索窗口。
+"noremap <leader>fR :<C-U><C-R>=printf("Leaderf! gtags --recall %s",
+""")<CR><CR>
+"跳转到下一个搜索结果。
+"noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+"跳转到上一个搜索结果。
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+"gtags配置
+let g:Lf_GtagsAutoGenerate = 1
+"自动生成gtags数据库。保存在~/.vimcache/.lfcache/gtags/。
+let g:Lf_RootMarkers = ['.git', '.svn']                    "工程根目录标识。
+let g:Lf_Gtagslabel = 'native-pygments'
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " ack
 nnoremap <leader>F :Ack!<space>
