@@ -162,6 +162,7 @@ Plug 'Shougo/echodoc.vim'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-scripts/DoxygenToolkit.vim'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -412,6 +413,43 @@ nnoremap <leader>gg :GV?<cr>
 
 " vim-cool
 let g:cool_total_matches = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"doxygen
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"DoxLic
+let s:licenseTag = "\<enter>"
+let s:licenseTag = s:licenseTag . "Call Center On Demand Product Series\<enter>"
+let s:licenseTag = s:licenseTag . "Copyright (C) 2023 lockin(shenzheng) Technology Ltd., Co.\<enter>"
+let s:licenseTag = s:licenseTag . "All right reserved\<enter>"
+let s:licenseTag = s:licenseTag . "\<enter>"
+let s:licenseTag = s:licenseTag . "$$\<enter>"
+let s:licenseTag = s:licenseTag . "TODO:\<enter>"
+let s:licenseTag = s:licenseTag . "\<enter>"
+let s:licenseTag = s:licenseTag . "*******************************************************/"
+let g:DoxygenToolkit_licenseTag = s:licenseTag
+"DoxAuthor
+let g:DoxygenToolkit_authorTag ="@author :"
+let g:DoxygenToolkit_fileTag   ="@file   :"
+let g:DoxygenToolkit_versionTag="@version:"
+let g:DoxygenToolkit_dateTag   ="@date   :"
+let g:DoxygenToolkit_authorName="augus.sun"
+let g:DoxygenToolkit_versionString="1.0"
+"Dox
+"let g:DoxygenToolkit_blockHeader="*******************************************************"
+let g:DoxygenToolkit_briefTag_funcName="yes"
+let g:DoxygenToolkit_briefTag_pre ="@function  "
+let g:DoxygenToolkit_briefTag_post="\<enter>* @brief     "
+let g:DoxygenToolkit_paramTag_pre ="@param[in] "
+let g:DoxygenToolkit_paramTag_post="            #"
+let g:DoxygenToolkit_returnTag   ="@return   "
+"let g:DoxygenToolkit_blockFooter="*******************************************************"
+"DoxBlock
+let g:DoxygenToolkit_compactDoc = "yes" "紧凑一点的方式排列brief和params以及return
+let g:DoxygenToolkit_commentType="C"
+let g:doxygen_enhanced_color=1
+let g:DoxygenToolkit_classTag = "@class "
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " taglist setting
