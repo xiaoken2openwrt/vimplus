@@ -136,7 +136,8 @@ Plug 'Yggdroot/LeaderF'
 Plug 'mileszs/ack.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
-Plug 'romainl/vim-cool'
+"Plug 'romainl/vim-cool'                     "augus更倾向于vim-anzu的风格,不习惯光标移动高亮消失的功能
+Plug 'osyo-manga/vim-anzu'
 Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -414,6 +415,18 @@ nnoremap <leader>gg :GV?<cr>
 " vim-cool
 let g:cool_total_matches = 1
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" anzu
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" clear status
+"nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+" statusline
+"set statusline=%{anzu#search_status()}
+" mapping
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "doxygen
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
