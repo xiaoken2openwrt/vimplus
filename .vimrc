@@ -152,7 +152,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'junegunn/vim-slash'
+"Plug 'junegunn/vim-slash'                              "优化搜索,移动光标后清除高亮
 Plug 'junegunn/gv.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-indent'
