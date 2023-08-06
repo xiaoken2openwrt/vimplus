@@ -36,9 +36,9 @@ set ruler                " 总是显示光标位置
 set laststatus=2         " 总是显示状态栏
 set number               " 开启行号显示
 set cursorline           " 高亮显示当前行
-set whichwrap+=<,>,h,l   " 设置光标键跨行
+"set whichwrap+=<,>,h,l   " 设置光标键跨行
 set ttimeoutlen=0        " 设置<ESC>键响应时间
-set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
+"set virtualedit=block,onemore   " 允许光标出现在最后一个字符的后面
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 代码缩进和排版
@@ -48,7 +48,7 @@ set cindent              " 设置使用C/C++语言的自动缩进方式
 set cinoptions=g0,:0,N-s,(0    " 设置C/C++语言的具体缩进方式
 set smartindent          " 智能的选择对其方式
 filetype indent on       " 自适应不同语言的智能缩进
-set expandtab            " 将制表符扩展为空格
+"set expandtab            " 将制表符扩展为空格
 set tabstop=4            " 设置编辑时制表符占用空格数
 set shiftwidth=4         " 设置格式化时制表符占用空格数
 set softtabstop=4        " 设置4个空格为制表符
@@ -386,8 +386,7 @@ noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 "gtags配置
-let g:Lf_GtagsAutoGenerate = 1
-"自动生成gtags数据库。保存在~/.vimcache/.lfcache/gtags/。
+let g:Lf_GtagsAutoGenerate = 1                             "自动生成gtags数据库。保存在~/.vimcache/.lfcache/gtags/。
 let g:Lf_RootMarkers = ['.git', '.svn']                    "工程根目录标识。
 let g:Lf_Gtagslabel = 'native-pygments'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
