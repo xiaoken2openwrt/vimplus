@@ -345,7 +345,7 @@ let g:Lf_UseCache = 0
 let g:Lf_CacheDirectory = expand('~/.VimCache/')           "设置Leaderf缓存根目录。
 let g:Lf_StlSeparator = { 'left': '', 'right': '' }      "分隔符号。
 let g:Lf_ShowDevIcons = 0                                  "不显示图标。
-let g:Lf_MaxCount = 500000                                 "最大搜索条目
+let g:Lf_MaxCount = 9999999                                "最大搜索条目
 
 "按键映射前缀: <leader>f。
 "文件搜索。
@@ -367,8 +367,7 @@ nnoremap <silent> <leader>fg :Leaderf gtags<CR>
 "noremap <leader>f<c-b> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s
 ", expand("<cword>"))<CR><CR>
 "通过Leaderf rg搜索光标下的字符串。
-"noremap <leader>f<c-f> :<C-U><C-R>=printf("Leaderf! rg -e %s ",
-"expand("<cword>"))<CR><CR>
+noremap <leader>f<c-f> :<C-U><C-R>=printf("Leaderf! rg -e %s ",expand("<cword>"))<CR><CR>
 "打开最近一次Leaderf rg搜索窗口。
 "noremap <leader>fr :<C-U>Leaderf! rg --recall<CR>
 
