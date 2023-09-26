@@ -489,6 +489,9 @@ nmap <C-_>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 endif
 
+"高亮行尾的空格
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
 
 
 " 加载自定义配置
