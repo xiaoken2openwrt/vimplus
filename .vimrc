@@ -295,11 +295,11 @@ let g:ycm_semantic_triggers =  {
             \   'lua' : ['.', ':'],
             \   'erlang' : [':'],
             \ }
-nnoremap <leader>u :YcmCompleter GoToDeclaration<cr>
-" 已经使用cpp-mode插件提供的转到函数实现的功能
-" nnoremap <leader>i :YcmCompleter GoToDefinition<cr> 
-nnoremap <leader>o :YcmCompleter GoToInclude<cr>
-nnoremap <leader>ff :YcmCompleter FixIt<cr>
+
+nnoremap <leader>cu :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>ci :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>cs :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>cf :YcmCompleter FixIt<cr>
 nmap <F5> :YcmDiags<cr>
 
 " tagbar
