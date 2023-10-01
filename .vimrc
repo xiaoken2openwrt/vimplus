@@ -165,6 +165,7 @@ Plug 'rhysd/clever-f.vim'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'vim-scripts/taglist.vim'
+Plug 'zivyangll/git-blame.vim'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -493,6 +494,8 @@ endif
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
 
+"git-blame
+nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
