@@ -166,6 +166,7 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'vim-scripts/taglist.vim'
 Plug 'zivyangll/git-blame.vim'
+Plug 'airblade/vim-gitgutter'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -496,6 +497,26 @@ match WhitespaceEOL /\s\+$/
 
 "git-blame
 nnoremap <Leader>gs :<C-u>call gitblame#echo()<CR>
+
+"vim-git-gutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_max_signs = 500" default value (Vim < 8.1.0614, Neovim < 0.4.0)
+let g:gitgutter_signs = 1
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_highlight_linenrs = 1
+let g:gitgutter_async = 1
+let g:gitgutter_preview_win_floating = 1
+
+nmap ]h <Plug>(GitGutterNextHunk) "跳到下一个hunk
+nmap [h <Plug>(GitGutterPrevHunk) "跳到前一个hunk
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)"预览一个hunkT
+nmap <leader>hs <Plug>(GitGutterStageHunk)"暂存一个hunk,类イ以git add
+nmap <leader>hu <Plug>(GitGutterUndoHunk) "恢复一个 hunk的暂存
+nmap <leader>hd :GitGutterDisable<CR><
+nmap <leader>he :GitGutterEnable<CR><
+nmap <leader>hf :GitGutterFold<CR> "折叠没有变动的行~
+
+set updatetime=1000 "设置更新为1000ms,默认是4000ms,看起来刷新太慢了,1s刚刚好
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
