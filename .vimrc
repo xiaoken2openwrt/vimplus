@@ -167,6 +167,8 @@ Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'vim-scripts/taglist.vim'
 Plug 'zivyangll/git-blame.vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-mark'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -518,6 +520,18 @@ nmap <leader>he :GitGutterEnable<CR><
 nmap <leader>hf :GitGutterFold<CR> "折叠没有变动的行~
 
 set updatetime=1000 "设置更新为1000ms,默认是4000ms,看起来刷新太慢了,1s刚刚好
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"mark.vim @https://blog.csdn.net/k7arm/article/details/103556376
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <unique> <Leader>m  <Plug>MarkSet
+nmap <unique> <Leader>mr <Plug>MarkRegex
+nmap <unique> <Leader>mc <Plug>MarkClear
+nmap <unique> <Leader>mn <Plug>MarkSearchNext
+nmap <unique> <Leader>mp <Plug>MarkSearchPrev
+nmap <unique> <Leader>m* <Plug>MarkSearchCurrentNext
+nmap <unique> <Leader>m# <Plug>MarkSearchCurrentPrev
+
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
