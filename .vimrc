@@ -129,6 +129,7 @@ Plug 'chxuan/vim-edit'
 Plug 'chxuan/change-colorscheme'
 Plug 'chxuan/prepare-code'
 Plug 'xiaoken2openwrt/vim-buffer'
+Plug 'xiaoken2openwrt/vim-clang-format'
 Plug 'chxuan/vimplus-startify'
 Plug 'preservim/tagbar'
 Plug 'Valloric/YouCompleteMe'
@@ -218,6 +219,9 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "
 set background=dark
 let g:onedark_termcolors=256
 colorscheme onedark
+
+" vim-clang-format
+let g:clang_format#auto_format_on_insert_leave=1	"退出插入模式时自动格式化
 
 " airline
 let g:airline_theme="onedark"
