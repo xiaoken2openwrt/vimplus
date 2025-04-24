@@ -544,14 +544,14 @@ nmap <unique> <Leader>m# <Plug>MarkSearchCurrentPrev
 " 设置ALE 检查时机
 "let g:ale_enabled = 1 " 启用 ALE 一直检查,一打开vim就检查.
 let g:ale_lint_on_enter = 0 " 一进入vim就检查.这里关闭了,默认是打开的
-let g:ale_lint_on_text_changed = 'never' " 如果希望在输入时实时检查,添加此行配置为'always',否则为‘nerver’
-let g:ale_lint_on_insert_leave = 1 " ALE在退出编译模式时检查.默认时关闭的，这里显示地打开了"
-let g:ale_lint_on_save = 0 " ALE在保存文件时进行检查.默认是打开的，这里显示地关闭了"
+let g:ale_lint_on_text_changed = 'never' " 如果希望在输入时实时检查,添加此行配置为'always',否则为‘never’
+let g:ale_lint_on_insert_leave = 0 " ALE在退出编译模式时检查.默认时关闭的，这里显示地打开了"
+let g:ale_lint_on_save = 1 " ALE在保存文件时进行检查.默认是打开的，这里显示地关闭了"
 
 " 设置ALE 支持的语言以及linter
 let g:ale_linters = {
-    \ 'c': ['clang'],
-    \ 'c++': ['clang'],
+    \ 'c': ['clangtidy'],
+    \ 'c++': ['clangtidy'],
 \ } " 配置 C/C++ 语言使用 Clang 检查,python语言使用Python检查
 
 " 设置ALE 错误提示样式
@@ -566,8 +566,10 @@ nmap <Leader>s :ALEToggle<CR> " 手动 触发/关闭语法检查
 nmap <Leader>sd :ALEDetail<CR> " 手动查看错误或警告的详细信息
 nmap <Leader>sp <Plug>(ale_previous_wrap) "跳转到ale的前一个错误"
 nmap <Leader>sn <Plug>(ale_next_wrap)     "跳转到ale的后一个错误"
+nmap <Leader>sc :ALEReset<CR>   " 设置清除 ALE 缓存的快捷键映射
 
-let g:ale_c_clang_options = '-I/usr/local/include -DDEBUG' "配置 Clang 检查选项（可选）
+" 配置Clang检查选项.这里我们不设置了,全部放在compile_commands.json跟着项目走,配置更灵活
+"let g:ale_c_clang_options = '-I/usr/local/include -Wall -Wextra -Wnull-dereference -Wpedantic' "配置 Clang 检查选项（可选）
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
