@@ -170,6 +170,7 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-mark'
+Plug 'dense-analysis/ale'
 
 " 加载自定义插件
 if filereadable(expand($HOME . '/.vimrc.custom.plugins'))
@@ -193,7 +194,7 @@ nnoremap <leader>h :view +let\ &l:modifiable=0 ~/.vimplus/help.md<cr>
 nnoremap <leader>H :execute ":help " . expand("<cword>")<cr>
 
 " 重新加载vimrc文件
-nnoremap <leader>s :source $MYVIMRC<cr>
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " 安装、更新、删除插件
 nnoremap <leader><leader>i :PlugInstall<cr>
@@ -239,7 +240,7 @@ let g:airline_right_alt_sep = ''
 nnoremap <leader>y :CopyCode<cr>
 nnoremap <leader>p :PasteCode<cr>
 nnoremap <leader>U :GoToFunImpl<cr>
-nnoremap <silent> <leader>a :Switch<cr>
+nnoremap <silent> <leader>ca :Switch<cr>
 nnoremap <leader><leader>fp :FormatFunParam<cr>
 nnoremap <leader><leader>if :FormatIf<cr>
 nnoremap <leader><leader>t dd :GenTryCatch<cr>
@@ -536,6 +537,37 @@ nmap <unique> <Leader>mp <Plug>MarkSearchPrev
 nmap <unique> <Leader>m* <Plug>MarkSearchCurrentNext
 nmap <unique> <Leader>m# <Plug>MarkSearchCurrentPrev
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"ale @
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 设置ALE 检查时机
+"let g:ale_enabled = 1 " 启用 ALE 一直检查,一打开vim就检查.
+let g:ale_lint_on_enter = 0 " 一进入vim就检查.这里关闭了,默认是打开的
+let g:ale_lint_on_text_changed = 'never' " 如果希望在输入时实时检查,添加此行配置为'always',否则为‘nerver’
+let g:ale_lint_on_insert_leave = 1 " ALE在退出编译模式时检查.默认时关闭的，这里显示地打开了"
+let g:ale_lint_on_save = 0 " ALE在保存文件时进行检查.默认是打开的，这里显示地关闭了"
+
+" 设置ALE 支持的语言以及linter
+let g:ale_linters = {
+    \ 'c': ['clang'],
+    \ 'c++': ['clang'],
+\ } " 配置 C/C++ 语言使用 Clang 检查,python语言使用Python检查
+
+" 设置ALE 错误提示样式
+let g:ale_sign_error = '✗'   " 设置错误和警告的显示符号
+let g:ale_sign_warning = '⚠' " 设置错误和警告的显示符号
+let g:ale_floating_window = 1 " 启用悬浮窗口显示详细错误信息
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+" 设置ALE 快捷键映射
+nmap <Leader>s :ALEToggle<CR> " 手动 触发/关闭语法检查
+nmap <Leader>sd :ALEDetail<CR> " 手动查看错误或警告的详细信息
+nmap <Leader>sp <Plug>(ale_previous_wrap) "跳转到ale的前一个错误"
+nmap <Leader>sn <Plug>(ale_next_wrap)     "跳转到ale的后一个错误"
+
+let g:ale_c_clang_options = '-I/usr/local/include -DDEBUG' "配置 Clang 检查选项（可选）
 
 " 加载自定义配置
 if filereadable(expand($HOME . '/.vimrc.custom.config'))
