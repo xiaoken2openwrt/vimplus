@@ -222,7 +222,11 @@ let g:onedark_termcolors=256
 colorscheme onedark
 
 " vim-clang-format
+let g:clang_format#auto_format =1
 let g:clang_format#auto_format_on_insert_leave=1	"退出插入模式时自动格式化
+nnoremap <leader>td :ClangFormatAutoDisable<CR>
+nnoremap <leader>te :ClangFormatAutoEnable<CR>
+nnoremap <leader>tt :ClangFormatAutoToggle<CR>
 
 " airline
 let g:airline_theme="onedark"
